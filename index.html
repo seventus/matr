@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador de Cartas - Matriarchy</title>
+    <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&family=Cinzel&display=swap" rel="stylesheet">
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Input Section -->
+        <div class="input-section">
+            <h1>Criar Carta Matriarchy</h1>
+            
+            <div class="form-group">
+                <label>Nome da Atriz:</label>
+                <input type="text" id="actressName" required>
+                <div class="error" id="nameError"></div>
+            </div>
+
+            <div class="trait-selectors">
+                <div class="form-group">
+                    <label>Cor da Pele:</label>
+                    <select id="skinColor">
+                        <option value="clara">Clara</option>
+                        <option value="oliva">Oliva</option>
+                        <option value="media">Média</option>
+                        <option value="marrom">Marrom</option>
+                        <option value="escura">Escura</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>Cor do Cabelo:</label>
+                    <select id="hairColor">
+                        <option value="preto">Preto</option>
+                        <option value="castanho">Castanho</option>
+                        <option value="vermelho">Vermelho</option>
+                        <option value="loiro">Loiro</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Idade: <span id="ageDisplay">30</span> anos</label>
+                <input type="range" id="age" min="18" max="70" value="30">
+            </div>
+
+            <div class="form-group">
+                <label>Foto:</label>
+                <input type="file" id="photoUpload" accept="image/*">
+                <div class="error" id="photoError"></div>
+            </div>
+
+            <div class="form-group">
+                <label class="checkbox">
+                    <input type="checkbox" id="roleBonus"> 
+                    Interpretou Rainha/General?
+                </label>
+            </div>
+
+            <div class="form-group">
+                <label>Aliança:</label>
+                <div id="allianceGrid" class="alliance-grid"></div>
+                <div class="error" id="allianceError"></div>
+            </div>
+
+            <button onclick="generateCard()">Gerar Carta</button>
+            <button onclick="downloadCard()">Baixar PNG</button>
+        </div>
+
+        <!-- Card Preview -->
+        <div class="card-container" id="cardPreview">
+            <div class="card-background" id="cardBackground"></div>
+            <div class="card-title">
+                <span id="cardType">Rainha</span> 
+                <span id="actorName"></span> 
+                <span id="kingdomName"></span>
+            </div>
+            <div class="photo-container">
+                <img id="actorPhoto" class="actor-photo">
+            </div>
+            <div class="stats">
+                <div>⚔️ <span id="attackValue">0</span></div>
+                <div>🛡️ <span id="defenseValue">0</span></div>
+            </div>
+            <div class="ability">
+                <img src="assets/icons/earth-icon.png" class="ability-icon">
+                <span id="abilityText"></span>
+            </div>
+            <div class="card-footer">
+                <p id="actressRealName"></p>
+            </div>
+            <div class="alliance-symbol" id="allianceSymbol"></div>
+            <div class="card-type-symbol" id="cardTypeSymbol"></div>
+            <img src="assets/frames/common-frame.png" class="card-frame">
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
